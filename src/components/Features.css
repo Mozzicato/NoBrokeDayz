@@ -50,7 +50,7 @@
 .feature-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(108,61,255,0.15);
+  border-color: rgba(0,217,127,0.2);
 }
 
 .feature-card:hover::before {
@@ -146,8 +146,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(108,61,255,0.06);
-  border: 1.5px solid rgba(108,61,255,0.14);
+  background: rgba(0,217,127,0.06);
+  border: 1.5px solid rgba(0,217,127,0.18);
   color: var(--dark);
   font-size: 0.82rem;
   font-weight: 600;
@@ -157,8 +157,8 @@
 }
 
 .features__chip:hover {
-  background: rgba(108,61,255,0.12);
-  border-color: rgba(108,61,255,0.3);
+  background: rgba(0,217,127,0.12);
+  border-color: rgba(0,217,127,0.4);
   transform: translateY(-2px);
 }
 
@@ -204,15 +204,15 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #0F2040;
+  background: #0D1511;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #C49A30;
+  color: #00D97F;
   flex-shrink: 0;
-  border: 1.5px solid rgba(196,154,48,0.3);
+  border: 1.5px solid rgba(0,217,127,0.3);
 }
 
 .features__testimonial-name {

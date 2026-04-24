@@ -54,9 +54,10 @@ function Hero() {
           </div>
 
           <h1 className="hero__headline">
-            No More<br />
+            No{' '}
             <span className="hero__headline-green">Broke</span>
-            <span className="hero__headline-white"> Days.</span>
+            <br />
+            <span className="hero__headline-white">Dayz.</span>
           </h1>
 
           <p className="hero__subline">
