@@ -1,0 +1,113 @@
+/* ===========================
+   App Shell
+   =========================== */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* ——— Section shared utilities ——— */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-tag {
+  display: inline-block;
+  background: transparent;
+  color: var(--orange);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--orange);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.12;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.015em;
+}
+
+.section-title span {
+  color: var(--orange);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-text);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.78;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ——— Shared buttons ——— */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--purple);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--purple);
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.75);
+}
