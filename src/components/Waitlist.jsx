@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './Waitlist.css';
 
+// Paste your Formspree form ID here (formspree.io → New Form → copy the ID from the URL)
+const FORMSPREE_ID = 'mkokywyr';
+
 function Waitlist() {
   const [form, setForm] = useState({ name: '', email: '', role: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [errors, setErrors] = useState({});
 
   const validate = () => {
@@ -15,12 +20,30 @@ function Waitlist() {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
-    setSubmitted(true);
+    setSubmitError('');
+    setLoading(true);
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: form.name, email: form.email, role: form.role }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (field, value) => {
@@ -115,13 +138,16 @@ function Waitlist() {
                   {errors.role && <span className="waitlist__error">{errors.role}</span>}
                 </div>
 
-                <button type="submit" className="waitlist__submit">
-                  Join the Waitlist
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
+                <button type="submit" className="waitlist__submit" disabled={loading}>
+                  {loading ? 'Securing your spot…' : 'Join the Waitlist'}
+                  {!loading && (
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  )}
                 </button>
 
+                {submitError && <p className="waitlist__error" style={{ textAlign: 'center' }}>{submitError}</p>}
                 <p className="waitlist__privacy">🔒 No spam. Your info stays on campus.</p>
               </form>
             ) : (
